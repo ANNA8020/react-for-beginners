@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-        <span>Total Clicks: 0</span>
-        <button id="btn">Click me</button>
-        <!-- 버튼이 많으면 어떤 button을 선택해야 하는지 몰르니 id를 씀 -->
-    </body>
-    <script>
-        let counter = 0;
-        const button = document.getElementById("btn");
-        const span = document.querySelector("span");
-        function handleClick(){
-            counter = counter + 1;
-            span.innerText = `Total clicks: ${counter}`;
-        }
-        button.addEventListener("click", handleClick);
-    </script>
+    <body></body>
+    <script src="http://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 </html>
