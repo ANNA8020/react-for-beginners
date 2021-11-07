@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body></body>
+    <body>
+        <div id="root"></div>
+    </body>
     <script src="http://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- React: element를 어떻게 생성하는지 설명 -->
     <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- React-dom: library and package  모든 React element을 HTML body에 둘 수 있도록 해줘 -->
+    <script>
+        const root = document.getElementById("root");
+        const span = React.createElement(
+            "span",
+            { id: "sexy-span", style: { color: "pink "} },
+            "Hello I'm a span"
+        );
+        // 괄호 안에 span은 내가 생성하고자 하는 HTML 태그와 똑같은 이름이어야 해.
+        // arg 1: HTMl 태그  arg 2: id and style,  arg 3: content
+        ReactDOM.render(span, root);
+        // render: React element를 가지고 HTML로 만들어 배치
+    </script>
 </html>
