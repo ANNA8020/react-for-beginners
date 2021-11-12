@@ -11,11 +11,15 @@
     <script type="text/babel">
         const root = document.getElementById("root");
         function App () {
-        const [counter, modifier] = React.useState(0);    
-            return (
+        const [counter, setCounter] = React.useState(0);
+        // ele 1: 내가 담으려는 data, ele 2: data 값을 바꿀 때 사용할 modifier  
+        const onClick = () => {
+            setCounter(counter + 1);
+        };
+        return (
                 <div>
-                    <h3>Total Clicks: 0</h3> 
-                    <button>Click me</button>
+                    <h3>Total Clicks: {counter}</h3> 
+                    <button onClick={onClick}>Click me</button>
                 </div>
             );
         };
