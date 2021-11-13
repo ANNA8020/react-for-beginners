@@ -9,21 +9,29 @@
     <!-- React-dom: library and package  모든 React element을 HTML body에 둘 수 있도록 해줘 -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const root = document.getElementById("root");
         function App () {
-        const [counter, setCounter] = React.useState(0);
-        // ele 1: 내가 담으려는 data, ele 2: data 값을 바꿀 때 사용할 modifier  
-        const onClick = () => {
-            // setCounter(counter + 1);
-            setCounter((current) => current + 1);
-        };
-        return (
+            const [minutes, setMinutes] = React.useState("");
+            // array1: value, array2: value 수정 + component를 새로고침 할 때 쓰는 함수
+            const onChange = (event) => {
+                setMinutes(event.target.value);
+            };
+            return (
                 <div>
-                    <h3>Total Clicks: {counter}</h3> 
-                    <button onClick={onClick}>Click me</button>
+                    <h1 className="hi">Super Converter</h1>
+                    <label htmlfor="minutes">Minutes</label>
+                    <input 
+                    value={minutes}
+                    id="minutes" 
+                    placeholder="Minutes" 
+                    type="number"
+                    onChange={onChange} />
+                    <h4>You want to convert {minutes}</h4>
+                    <label htmlfor="hours">Hours</label>
+                    <input id="hours" placeholder="Hours" type="number" />
                 </div>
-            );
-        };
+                );
+            };
+        const root = document.getElementById("root");
         ReactDOM.render(<App />, root);
     </script>
 </html>
