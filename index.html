@@ -14,7 +14,8 @@
         const [counter, setCounter] = React.useState(0);
         // ele 1: 내가 담으려는 data, ele 2: data 값을 바꿀 때 사용할 modifier  
         const onClick = () => {
-            setCounter(counter + 1);
+            // setCounter(counter + 1);
+            setCounter((current) => current + 1);
         };
         return (
                 <div>
