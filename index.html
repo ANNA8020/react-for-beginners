@@ -11,42 +11,42 @@
     <script type="text/babel">
         function App () {
             const [amount, setAmount] = React.useState(0);
-            const [flipped, setFlipped] = React.useState(false);
+            const [inverted, setInverted] = React.useState(false);
             // array1: value, array2: value 수정 + component를 새로고침 할 때 쓰는 함수
             const onChange = (event) => {
                 setAmount(event.target.value);
             };
             const reset = () => setAmount(0);
-            const onFlip = () => {
+            const onInvert = () => {
                 reset();
-                setFlipped((current) => !current)};
+                setInverted((current) => !current)};
             return (
                 <div>
                     <h1>Super Converter</h1>
                     <div>
                         <label htmlfor="minutes">Minutes</label>
                         <input 
-                        value={flipped ? amount * 60 : amount}
+                        value={inverted ? amount * 60 : amount}
                         id="minutes" 
                         placeholder="Minutes" 
                         type="number"
                         onChange={onChange} 
-                        disabled={flipped}/>
+                        disabled={inverted}/>
                     </div>
                     
                     <div>
                         <label htmlfor="hours">Hours</label>
                         <input 
-                        value={flipped ? amount : Math.round(amount / 60)}
+                        value={inverted ? amount : Math.round(amount / 60)}
                         // Math.round: 스스로 숫자를 반올림 해줌
                         id="hours" 
                         placeholder="Hours" 
                         type="number" 
                         onChange={onChange}
-                        disabled={!flipped} />
+                        disabled={!inverted} />
                     </div>
                     <button onClick={reset}>Reset</button>
-                    <button onClick={onFlip}>Flip</button>
+                    <button onClick={onInvert}>{inverted ? "Turn back" : "Invert"}</button>
                 </div>
                 );
             };
