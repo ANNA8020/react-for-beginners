@@ -9,7 +9,7 @@
     <!-- React-dom: library and package  모든 React element을 HTML body에 둘 수 있도록 해줘 -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function App () {
+        function MinutesToHours () {
             const [amount, setAmount] = React.useState(0);
             const [inverted, setInverted] = React.useState(false);
             // array1: value, array2: value 수정 + component를 새로고침 할 때 쓰는 함수
@@ -22,7 +22,6 @@
                 setInverted((current) => !current)};
             return (
                 <div>
-                    <h1>Super Converter</h1>
                     <div>
                         <label htmlfor="minutes">Minutes</label>
                         <input 
@@ -50,6 +49,30 @@
                 </div>
                 );
             };
+        function KmToMiles () {
+            return <h3>KM 2 M</h3>
+        }
+        function App () {
+            const [index, setIndex]= React.useState("-1");
+            const onSelect = (event) => {
+                setIndex(event.target.value);
+            }
+            console.log("render w/", index);
+            return (
+                <div>
+                    <h1 value={index}>Super Converter</h1>
+                    <select onChange={onSelect}>
+                        <option value="-1"> Select Your Units</option>
+                        <option value="0">Minutes & Hours</option>
+                        <option value="1">Kilometers & Miles</option>    
+                    </select>
+                    <hr />
+                    {index === "-1" ? "Please Select Your Units" : null}
+                    {index === "0" ? <MinutesToHours /> : null}
+                    {index === "1" ? <KmToMiles /> : null}
+                </div>
+            );
+        };
         const root = document.getElementById("root");
         ReactDOM.render(<App />, root);
     </script>
