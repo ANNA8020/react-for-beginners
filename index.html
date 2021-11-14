@@ -7,18 +7,19 @@
     <!-- React: element를 어떻게 생성하는지 설명 -->
     <script src="http://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <!-- React-dom: library and package  모든 React element을 HTML body에 둘 수 있도록 해줘 -->
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function Btn({ text, onClick }) {
+        function Btn ({ text, fontSize = 12 }) {
             return (
                 <button
-                    onClick={onClick}
                     style={{
                         background: "skyblue",
                         color: "white",
                         padding: "10px 20px",
                         border: 0,
                         borderRadius: 10,
+                        fontSize,
                     }}>
                     { text }
                     </button>)
@@ -26,14 +27,15 @@
         function ConfirmBtn() {
             return <button>Confirm</button>
         }
-        const MemorizedBtn = React.memo(Btn);
+        Btn.propTypes = {
+            text: PropTypes.string.isRequired,
+            fontSize: PropTypes.numbe,
+        }
         function App () {
-            const [value, setValue] = React.useState("Save Changes");
-            const changeValue = () => setValue("Revert Changes")
             return (
                 <div>
-                    <MemorizedBtn text={value} onClick={changeValue} />
-                    <MemorizedBtn text="Continue" />
+                    <Btn text="Save Changes" fontSize={18} />
+                    <Btn text="Continue" />
                 </div>
             );
         };
